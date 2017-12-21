@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            {% for country in countries %}
+            <div class="col-sm-4 text-center">
+                    <h2>{{ country }}</h2>
+
+                        {% for step in country.steps|slice(0,3) %}
+                            <p>{{ step.date|date('d-m-Y') }} : {{ step }}</p>
+                            {% for link in step.links %}
+                                <img class="thumbnail" src="{{ link }}" alt="{{ link.name }}"/>
+                            {% endfor %}
+                        {% endfor %}
+            </div>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Link creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <ul class="list-inline">
+        <li>
+            <input class="btn btn-success"  type="submit" value="Create" />
+        </li>
+        <li>
+            <a class="btn btn-info" href="{{ path('link_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    {{ form_end(form) }}
+
+
+{% endblock %}

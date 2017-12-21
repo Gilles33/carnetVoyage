@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Links list</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-info" href="{{ path('link_new') }}">Create a new link</a>
+        </li>
+    </ul>
+
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Resource</th>
+                <th>Step</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for link in links %}
+            <tr>
+                <td><a href="{{ path('link_show', { 'id': link.id }) }}">{{ link.id }}</a></td>
+                <td>{{ link.name }}</td>
+                <td id="ressource">{{ link.resource }}</td>
+                <td>{{ link.step }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('link_show', { 'id': link.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('link_edit', { 'id': link.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

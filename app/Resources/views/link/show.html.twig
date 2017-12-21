@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Link</h1>
+
+    <table class="table table-hover text-center">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ link.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ link.name }}</td>
+
+        </tr>
+        <tr>
+            <th>Step</th>
+            <td>{{ link.step }}</td>
+        </tr>
+        <tr>
+            <th>Resource</th>
+            <td>{{ link.resource }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {{ form_start(delete_form) }}
+    <ul class="list-inline">
+        <li>
+            <a class="btn btn-info" href="{{ path('link_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a class="btn btn-warning" href="{{ path('link_edit', { 'id': link.id }) }}">Edit</a>
+        </li>
+        <li>
+            <input class="btn btn-danger" type="submit" value="Delete">
+        </li>
+    </ul>
+    {{ form_end(delete_form) }}
+
+{% endblock %}

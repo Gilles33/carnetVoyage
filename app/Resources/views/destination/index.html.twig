@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Destinations list</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-info" href="{{ path('destination_new') }}">Create a new destination</a>
+        </li>
+    </ul>
+
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Country</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for destination in destinations %}
+            <tr>
+                <td><a href="{{ path('destination_show', { 'id': destination.id }) }}">{{ destination.id }}</a></td>
+                <td>{{ destination.country }}</td>
+                <td>{% if destination.start %}{{ destination.start|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if destination.end %}{{ destination.end|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('destination_show', { 'id': destination.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('destination_edit', { 'id': destination.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Steps list</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-info" href="{{ path('step_new') }}">Create a new step</a>
+        </li>
+    </ul>
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for step in steps %}
+            <tr>
+                <td><a href="{{ path('step_show', { 'id': step.id }) }}">{{ step.id }}</a></td>
+                <td>{% if step.date %}{{ step.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ step.town }}</td>
+                <td>{{ step.description }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('step_show', { 'id': step.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning" href="{{ path('step_edit', { 'id': step.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
